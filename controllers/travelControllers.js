@@ -43,7 +43,7 @@ const addTravelBook = async (req, res) => {
     const newTravel = await Travel.create({
       title,
       image,
-      desc,
+      desc
     });
     return res.status(201).json({
       message: "succes",
@@ -54,8 +54,44 @@ const addTravelBook = async (req, res) => {
   }
 };
 
+// METHOD: PUT Edit ById travel book
+const updateTravelBook = async (req, res) => {
+  try {
+    const {
+      title,
+      image,
+      desc
+    } = req.body;
+    const updateTravel = await Travel.findByIdAndUpdate(req.params.id, {
+      title,
+      image,
+      desc
+    });
+    return res.status(200).json({
+      message: "succes",
+      updateTravel,
+    });
+  } catch (err) {
+    res.send(err);
+  }
+};
+
+// METHOD: DELETE remove ById travel book
+const removeTravelBook = async (req, res) => {
+  try {
+    await Travel.findByIdAndRemove(req.params.id);
+    return res.status(200).json({
+      message: "DELETED "
+    });
+  } catch (err) {
+    res.send(err);
+  }
+};
+
 module.exports = {
   getAllTravels,
   getByIdTravel,
-  addTravelBook
+  addTravelBook,
+  updateTravelBook,
+  removeTravelBook
 };
