@@ -1,18 +1,26 @@
-import Navbar from './components/Navbar';
-import Main from './pages/Main';
+import Navbar from './components/Navbar'
+import AddBook from './pages/AddBook'
+import Main from './pages/Main'
+import UpdateBook from './pages/UpdateBook'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-function App() {
-  return ( <>
-      <Navbar/>
-  <div className = "container" >
-    <div className='row'>
-      <div className='col-lg-10 offset-lg-1'>
-      <Main/>
+function App () {
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <div className='container'>
+        <div className='row'>
+          <div className='col-lg-10 offset-lg-1'>
+            <Routes>
+              <Route path='/' element={<Main />} />
+              <Route path='/add' element={<AddBook />} />
+              <Route path='/update/:id' element={<UpdateBook />} />
+            </Routes>
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
-    </>
-  );
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App

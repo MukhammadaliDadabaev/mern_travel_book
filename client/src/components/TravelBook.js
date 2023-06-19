@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const TravelBook = () => {
   return (
@@ -20,7 +21,12 @@ const TravelBook = () => {
           quas natus voluptatibus.
         </p>
         <p className='card-text'>
-          <small className='text-muted'>Last updated 3 mins ago</small>
+          <Link to='/update/:id' className='btn btn-outline-success me-2'>
+            UPDATE
+          </Link>
+          <Link to='/update/:id' className='btn btn-outline-danger me-2'>
+            DELETE
+          </Link>
         </p>
       </div>
     </div>
